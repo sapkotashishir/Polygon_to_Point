@@ -1,0 +1,11 @@
+
+tmp.sql
+gt-pt.dbf
+gt-pt.prj
+gt-pt.shp
+gt-pt.shx
+
+*.xml
+*.gpkg
+pointize/*
+.ipynb_checkpoints/LandCoverMapGen-checkpoint.ipynb
