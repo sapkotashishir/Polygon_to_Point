@@ -23,7 +23,7 @@ echo "DELETE FROM geometry_columns WHERE f_table_name = 'gt' OR  f_table_name = 
 
 for SHP in `find $SCPDIR -type f -regex ".*shp$" | sed 's/\.shp//g'`; do
     TBL=$(echo $(basename $SHP) | tr A-Z a-z | sed 's/-/_/g') # | sed 's/-.*//g'
-    GID=$(echo $(basename $SHP) | sed -e "s/-/_/g") # s/\(L.\{24\}\).*/\1/g; 
+    GID=$(echo $(basename $SHP) | sed -e "s/-/_/g") # s/\(S.\{24\}\).*/\1/g; 
     PROJ="$(cat $SHP.prj)"
     EPSG=$(python identifyEPSG.py "$PROJ")
     ogr2ogr -select MC_ID,C_ID,SCP_UID $WORKDIR/$(basename $SHP.shp) $SHP.shp
