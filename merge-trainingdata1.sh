@@ -35,9 +35,9 @@ echo "; INSERT INTO geometry_columns VALUES ('gt','geometry',3,2,4326,0);" >> $S
 sed -i 's/UNION ALL ;/;/' $SQL
 spatialite -silent $OUTDB < $SQL
 
-spatialite -silent $OUTDB ".loadshp 'past/Danworks' danworks UTF-8 32648 geometry"
-spatialite -silent $OUTDB "INSERT INTO gt (geometry,mc_id,gid) SELECT ST_Transform(geometry,4326), mc_id, gid from danworks; SELECT CreateSpatialIndex('gt','geometry');"
-
+#spatialite -silent $OUTDB ".loadshp 'past/Danworks' danworks UTF-8 32648 geometry"
+spatialite -silent $OUTDB "INSERT INTO gt (geometry,mc_id) SELECT ST_Transform(geometry,4326), mc_id; SELECT CreateSpatialIndex('gt','geometry');"
+#spatialite -silent $OUTDB "INSERT INTO gt (geometry,mc_id,gid) SELECT ST_Transform(geometry,4326), mc_id, gid from danworks; SELECT CreateSpatialIndex('gt','geometry');"
 
 mkdir -p pointize
 f_pointize() {
